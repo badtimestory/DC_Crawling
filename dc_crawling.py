@@ -1,6 +1,16 @@
 # ------------------------------
 # 실전주식투자 갤러리 크롤링
 # ------------------------------
+import logging
+
+
+# 로깅 환경 설정
+testLogger = logging.getLogger('test')
+testLogger.setLevel(logging.DEBUG)  # 로깅 수준 지정
+
+logging.basicConfig(
+    format='%(asctime)s %(levelname)s [%(filename)s:%(lineno)d] %(message)s', datefmt='%Y-%m-%d %I:%M:%S')
+testLogger.warning("logging test")
 
 
 # ------------------------------
