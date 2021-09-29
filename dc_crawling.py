@@ -2,23 +2,37 @@
 # 실전주식투자 갤러리 크롤링
 # ------------------------------
 import logging
+import datetime
 
 
 # 로깅 환경 설정
 testLogger = logging.getLogger('test')
-testLogger.setLevel(logging.DEBUG)  # 로깅 수준 지정
+testLogger.setLevel(logging.INFO)  # 로깅 수준 지정
 
+# 날짜 레벨 [파일명:라인넘버] 메시지 형태로 출력
 logging.basicConfig(
     format='%(asctime)s %(levelname)s [%(filename)s:%(lineno)d] %(message)s', datefmt='%Y-%m-%d %I:%M:%S')
-testLogger.warning("logging test")
 
 
 # ------------------------------
 # 사용자에게 입력받아야할 정보 : 크롤링할 게시글의 날짜를 지정, 출력파일의 저장 경로
 # ------------------------------
-
-
 # 크롤링할 게시글의 날짜를 사용자가 지정
+while True:
+    input_user_date = input("날짜를 입력해주세요(yyyy-mm-dd): ")
+    try:
+        year, month, day = map(int, input_user_date.split('-'))
+        testLogger.info("년: {}".format(year))
+        testLogger.info("월: {}".format(month))
+        testLogger.info("일: {}".format(day))
+
+        input_user_date = datetime.date(year, month, day)
+        testLogger.info(input_user_date)
+        testLogger.info(type(input_user_date))
+        break
+
+    except:
+        print("날짜 형식이 맞지않습니다.")
 
 
 # 사용자에게 입력받아야할 정보 : 출력파일의 저장 경로
